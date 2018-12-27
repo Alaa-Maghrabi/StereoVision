@@ -2,21 +2,6 @@ import cv2 as cv
 import os.path
 import numpy as np
 
-def drawlines(img1,img2,lines,pts1,pts2):
-    pts1 = np.int32(pts1)
-    pts2 = np.int32(pts2)
-    r,c = img1.shape
-    img1 = cv.cvtColor(img1,cv.COLOR_GRAY2BGR)
-    img2 = cv.cvtColor(img2,cv.COLOR_GRAY2BGR)
-    for r,pt1,pt2 in zip(lines,pts1,pts2):
-        color = tuple(np.random.randint(0,255,3).tolist())
-        x0,y0 = map(int, [0, -r[2]/r[1] ]) 
-        x1,y1 = map(int, [c, -(r[2]+r[0]*c)/r[1] ])
-        cv.line(img1, (x0,y0), (x1,y1), color,1)
-        cv.circle(img1,tuple(pt1), 10, color, -1)
-        cv.circle(img2,tuple(pt2), 10,color,-1)
-    return img1,img2
-	
 	
 stereocalibration_criteria = (cv.TERM_CRITERIA_MAX_ITER + cv.TERM_CRITERIA_EPS, 100, 1e-6)
 stereocalibration_flags = cv.CALIB_USE_INTRINSIC_GUESS
@@ -28,14 +13,14 @@ cbrow = 7
 cbcol = 5
 
 
-data = np.load("Calibration/normal_left_calibration.npz")
+data = np.load("../../Parameters/normal_left_calibration.npz")
 ret_l = data['ret']
 mtx_l = data['mtx']
 dist_l = data['dist']
 rvecs_l = data['rvecs']
 tvecs_l = data['tvecs']
 
-data = np.load("Calibration/normal_right_calibration.npz")
+data = np.load("../../Parameters/normal_right_calibration.npz")
 ret_r = data['ret']
 mtx_r = data['mtx']
 dist_r = data['dist']
@@ -55,8 +40,8 @@ for i in range(19,20):
 
 
 	for idx in range(0, i):
-		imgL = cv.imread('left_%d.png' %idx)
-		imgR = cv.imread('right_%d.png' %idx)
+		imgL = cv.imread('calibration_images/left_%d.png' %idx)
+		imgR = cv.imread('calibration_images/right_%d.png' %idx)
 		
 		h,  w = imgL.shape[:2]
 
@@ -94,7 +79,7 @@ for i in range(19,20):
 	
 	stereocalibration_retval, cameraMatrix1, distCoeffs1, cameraMatrix2, distCoeffs2, R, T, E, F = cv.stereoCalibrate(objpoints,imgpoints_l,imgpoints_R,mtx_l,dist_l,mtx_r,dist_r,imgR_g.shape[::-1], criteria = stereocalibration_criteria, flags = stereocalibration_flags)
 
-	
+	print(stereocalibration_retval)
 	print('camera matrix \n', cameraMatrix1)
 	print('dist coeff \n', distCoeffs1)
 	print('camera matrix 2\n', cameraMatrix2)
@@ -116,9 +101,9 @@ for i in range(19,20):
 	T[1] = -0.1796
 	T[2] = -2.4537
 	
-	R = np.array([[0.9996, 0.0146, 0.0272],
-						[-0.0145, 0.9999, -0.0042],
-						[-0.0272, 0.0038 ,0.9996]])
+	R = np.array([[0.9996, 0.0146,0.0272],
+				[-0.0145, 0.9999, -0.0042],
+				[-0.0272, 0.0038 ,0.9996]])
 	R=np.transpose(R)
 	print('camera matrix \n', cameraMatrix1)
 	print('dist coeff \n', distCoeffs1)
@@ -187,6 +172,6 @@ for i in range(19,20):
 	cv.imshow('image',np.hstack((imgR,imgL)))
 	cv.imshow('image-after',np.hstack((dst_r,dst_l)))
 	print(Q)
-	np.savez("Calibration/full_stereo_calib.npz", mtx1= mtx_l, mtx2=cameraMatrix2, dst1=dist_l, dst2=dist_r ,R1=rect_l,
+	np.savez("full_stereo_calib.npz", K1= mtx_l, K2=cameraMatrix2, D1=dist_l, D2=dist_r ,R1=rect_l,
 				R2=rect_r, P1=proj_l, P2=proj_r, Q=Q)
 	cv.waitKey()

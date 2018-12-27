@@ -17,8 +17,8 @@ _img_shape = None
 objpoints = [] # 3d point in real world space
 imgpoints = [] # 2d points in image plane.
 
-for idx in range(0, 53):
-	fname = 'right_%d.png' %idx
+for idx in range(0, 100):
+	fname = 'Images_calibration/left_%d.png' %idx
 	img = cv.imread(fname)
 	if _img_shape == None:
 		_img_shape = img.shape[:2]
@@ -28,18 +28,10 @@ for idx in range(0, 53):
     # Find the chess board corners
 	ret, corners = cv.findChessboardCorners(gray, CHECKERBOARD, cv.CALIB_CB_ADAPTIVE_THRESH+cv.CALIB_CB_FAST_CHECK+cv.CALIB_CB_NORMALIZE_IMAGE)
     # If found, add object points, image points (after refining them)
-	if ret == True:
+	if ret == True and idx not in [10,25,28,29,42,6]:
 		objpoints.append(objp)
 		cv.cornerSubPix(gray,corners,(3,3),(-1,-1),subpix_criteria)
 		imgpoints.append(corners)
-		# cv.drawChessboardCorners(img, CHECKERBOARD, corners, ret)
-		# cv.namedWindow('imgL')        # Create a named window
-		# cv.moveWindow('imgL', 40,30)
-		# cv.imshow('imgL', img)
-		
-		# cv.waitKey()
-		# cv.destroyAllWindows()
-
 
 N_OK = len(objpoints)
 K = np.zeros((3, 3))
@@ -59,7 +51,7 @@ dim1 = img.shape[:2][::-1]  #dim1 is the dimension of input image to un-distort
 DIM = _img_shape[::-1]
 dim2 = None
 dim3 = None
-balance = 1
+balance = 0
 assert dim1[0]/dim1[1] == DIM[0]/DIM[1], "Image to undistort needs to have same aspect ratio as the ones used in calibration"
 
 if not dim2:
@@ -75,18 +67,16 @@ scaled_K[2][2] = 1.0  # Except that K[2][2] is always 1.0
 new_K = cv.fisheye.estimateNewCameraMatrixForUndistortRectify(scaled_K, D, dim2, np.eye(3), balance=balance)
 map1, map2 = cv.fisheye.initUndistortRectifyMap(scaled_K, D, np.eye(3), new_K, dim3, cv.CV_16SC2)
 undistorted_img = cv.remap(img, map1, map2, interpolation=cv.INTER_LINEAR, borderMode=cv.BORDER_CONSTANT)
-cv.imshow("original_r", img)
-cv.imshow("undistorted_r", undistorted_img)
-np.savez("Calibration/fisheye_left_calibration.npz", K=K, D=D)
+np.savez("fisheye_left_calibration.npz", K=K, D=D)
 
-for idx in range(0, 30):
-	fname = 'right_%d.png' %idx
-	img = cv.imread(fname) 
+for idx in range(0, 5):
+	fname = 'left_%d.png' %idx
+	img = cv.imread(fname)
 	undistorted_img = cv.remap(img, map1, map2, interpolation=cv.INTER_LINEAR,  borderMode=cv.BORDER_CONSTANT)
 	cv.imshow("original_r", img)
 	cv.imshow("undistorted_r", undistorted_img)
 
-	cv.waitKey(400)
+	cv.waitKey()
 cv.destroyAllWindows()
 
 
@@ -96,8 +86,8 @@ _img_shape = None
 objpoints = [] # 3d point in real world space
 imgpoints = [] # 2d points in image plane.
 
-for idx in range(0, 53):
-	fname = 'left_%d.png' %idx
+for idx in range(0, 100):
+	fname = 'Images_calibration/right_%d.png' %idx
 	img = cv.imread(fname)
 	if _img_shape == None:
 		_img_shape = img.shape[:2]
@@ -107,7 +97,7 @@ for idx in range(0, 53):
     # Find the chess board corners
 	ret, corners = cv.findChessboardCorners(gray, CHECKERBOARD, cv.CALIB_CB_ADAPTIVE_THRESH+cv.CALIB_CB_FAST_CHECK+cv.CALIB_CB_NORMALIZE_IMAGE)
     # If found, add object points, image points (after refining them)
-	if ret == True:
+	if ret == True and idx not in [10, 17, 34, 35]:
 		objpoints.append(objp)
 		cv.cornerSubPix(gray,corners,(3,3),(-1,-1),subpix_criteria)
 		imgpoints.append(corners)
@@ -133,14 +123,14 @@ print("DIM=" + str(_img_shape[::-1]))
 print("K=np.array(" + str(K.tolist()) + ")")
 print("D=np.array(" + str(D.tolist()) + ")")
 
-np.savez("Calibration/fisheye_right_calibration.npz", K=K, D=D)
+np.savez("fisheye_right_calibration.npz", K=K, D=D)
 
 h,w = img.shape[:2]
 dim1 = img.shape[:2][::-1]  #dim1 is the dimension of input image to un-distort
 DIM = _img_shape[::-1]
 dim2 = None
 dim3 = None
-balance = 1 
+balance = 0
 assert dim1[0]/dim1[1] == DIM[0]/DIM[1], "Image to undistort needs to have same aspect ratio as the ones used in calibration"
 
 if not dim2:
@@ -157,12 +147,12 @@ scaled_K[2][2] = 1.0  # Except that K[2][2] is always 1.0
 new_K = cv.fisheye.estimateNewCameraMatrixForUndistortRectify(scaled_K, D, dim2, np.eye(3), balance=balance)
 map1, map2 = cv.fisheye.initUndistortRectifyMap(scaled_K, D, np.eye(3), new_K, dim3, cv.CV_16SC2)
 
-for idx in range(0, 32):
-	fname = 'left_%d.png' %idx
+for idx in range(0, 5):
+	fname = 'right_%d.png' %idx
 	img = cv.imread(fname) 
 	undistorted_img = cv.remap(img, map1, map2, interpolation=cv.INTER_LINEAR,  borderMode=cv.BORDER_CONSTANT)
 	cv.imshow("original", img)
 	cv.imshow("undistorted", undistorted_img)
 
-	cv.waitKey(400)
+	cv.waitKey()
 cv.destroyAllWindows()

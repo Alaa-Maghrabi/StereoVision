@@ -2,7 +2,11 @@ import cv2
 
 cam = cv2.VideoCapture(0)
 cap1 = cv2.VideoCapture(1)
-
+cam.set(3, 640)
+cam.set(4, 480)
+cap1.set(3, 640)
+cap1.set(4, 480)
+cv2.waitKey(1000)
 
 img_counter = 0
 
