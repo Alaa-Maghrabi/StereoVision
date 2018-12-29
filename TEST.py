@@ -30,14 +30,13 @@ cap1.set(4, 480)
 cv2.waitKey(5000)
 
 
-
 # This drives the program into an infinite loop.
 while(1):
 	ret, frame_right = cap.read()
 	_, frame_left = cap1.read()
 
-	cv2.imshow('frame_right',frame_right)
-	cv2.imshow('frame_left',frame_left)
+	cv2.imshow('frame_right', frame_right)
+	cv2.imshow('frame_left', frame_left)
 
 
 	if cv2.waitKey(30) & 0xFF == ord('q'):
