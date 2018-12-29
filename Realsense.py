@@ -101,7 +101,6 @@ class Realsense:
         depth = depth_frame.get_distance(xc, yc)
         self.point_3d = rs.rs2_deproject_pixel_to_point(depth_intrin, [xc, yc], depth)
 
-
     def collect_single_frame_data(self, frames, start, show=False, file_capture=False):
         # This function gets the 3d coordinates of the basketball for one frame, to be called inside a loop
         depth_frame = frames.get_depth_frame()
@@ -133,6 +132,7 @@ class Realsense:
         # Stack both images horizontally
         images = np.hstack((color_image, depth_colormap))
         cv.imshow('RealSense',images)
+
     def plot_charts(self):
         # Funtion to plot the 3d coordinates
         self.out = np.array(self.out)
@@ -244,6 +244,13 @@ class Realsense:
         depth_image = np.asanyarray(depth_frame.get_data())
         color_image = np.asanyarray(color_frame.get_data())
 
+        depth_intrin = depth_frame.profile.as_video_stream_profile().intrinsics
+        color_intrin = color_frame.profile.as_video_stream_profile().intrinsics
+        depth_to_color_extrin = depth_frame.profile.get_extrinsics_to(color_frame.profile)
+        print('\n \n Depth',depth_intrin)
+        print('\n \n Color',color_intrin)
+        print('\n \n Both', depth_to_color_extrin)
+
         xc, yc, radius = self.detect_ball(color_image, False)
 
         t1 = time.time()
@@ -299,21 +306,21 @@ class Realsense:
         self.save_trajectory('trajectory.txt')
         # self.save_keyframe('keyframe.txt')
 
-        # trajec = self.slam.get_trajectory_points()
-        # trajec = np.array(trajec)
+        trajec = self.slam.get_trajectory_points()
+        trajec = np.array(trajec)
 
         # self.out = np.array(self.out)
 
         ball = np.array(ball)
         print(ball)
         self.slam.shutdown()
-        # plt.figure('slam')
+        plt.figure('slam')
         # plt.plot(ball[:, 0], ball[:, 1], 'r', label='3D global', marker='*')
-        # plt.plot(trajec[:, 4], trajec[:, 12], 'b', label='Stereo system')
+        plt.plot(trajec[:, 4], trajec[:, 12], 'b', label='Stereo system')
         # plt.plot(trajec[:, 4] + 10, trajec[:, 12], 'k', label='Stereo system second')
         # plt.plot(self.out[:, 1] / 1000 + 10, self.out[:, 3] / 1000, 'g', label='3D relative', marker='*')
-        # plt.legend(loc='upper left')
-        # plt.show()
+        plt.legend(loc='upper left')
+        plt.show()
         times_track = sorted(times_track)
         total_time = sum(times_track)
         print('-----')
@@ -325,9 +332,9 @@ class Realsense:
 
 if __name__ == '__main__':
     # Here is an example of how to run the code to get the coordinates
-    num_frames = 300
+    num_frames = 600
     disparity_map = Realsense()
-    #out = disparity_map.collect_frames_data(num_frames, show= False, fisheye = True)
-    disparity_map.SLAM(num_frames)
+    out = disparity_map.collect_frames_data(num_frames, show= False, fisheye = True)
+    #disparity_map.SLAM(num_frames)
     disparity_map.destroy_feed()
     disparity_map.plot_charts()

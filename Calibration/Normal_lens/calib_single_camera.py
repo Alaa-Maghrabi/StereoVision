@@ -17,7 +17,7 @@ objpoints = [] # 3d point in real world space
 imgpoints = [] # 2d points in image plane.
 
 for idx in range(0, 19):
-	fname = 'left_%d.png' %idx
+	fname = 'calibration_images/left_%d.png' %idx
 	img = cv.imread(fname)
 	gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
     # Find the chess board corners
@@ -42,13 +42,13 @@ for idx in range(0, 19):
 #print(imgpoints)
 
 ret_l, mtx_l, dist_l, rvecs_l, tvecs_l = cv.calibrateCamera(objpoints, imgpoints, gray.shape[::-1], None, None)
-np.savez("Calibration/normal_left_calibration.npz", ret=ret_l, mtx=mtx_l, dist=dist_l, rvecs=rvecs_l, tvecs=tvecs_l)
+#np.savez("Calibration/normal_left_calibration.npz", ret=ret_l, mtx=mtx_l, dist=dist_l, rvecs=rvecs_l, tvecs=tvecs_l)
 
 # Check for left image
-img = cv.imread('left_2.png')
+img = cv.imread('calibration_images/left_2.png')
 h,  w = img.shape[:2]
 newcameramtx_l, roi_l = cv.getOptimalNewCameraMatrix(mtx_l, dist_l, (w,h), 1, (w,h))
-print(newcameramtx_l, roi_l)
+print(mtx_l, '\n', newcameramtx_l, roi_l)
 
 # undistort
 mapx, mapy = cv.initUndistortRectifyMap(mtx_l, dist_l, None, newcameramtx_l, (w,h), 5)
@@ -59,7 +59,7 @@ x, y, w, h = roi_l
 #dst_l = dst_l[y:y+h, x:x+w]
 cv.imshow('before calib', img)
 cv.imshow('calibresult', dst_l)
-
+cv.waitKey()
 tot_error = 0
 mean_error = 0
 for i in range(len(objpoints)):
@@ -95,7 +95,7 @@ for idx in range(0, 19):
 		# cv.waitKey()
 
 ret_r, mtx_r, dist_r, rvecs_r, tvecs_r = cv.calibrateCamera(objpoints, imgpoints, gray.shape[::-1], None, None)
-np.savez("Calibration/normal_right_calibration.npz", ret=ret_r, mtx=mtx_r, dist=dist_r, rvecs=rvecs_r, tvecs=tvecs_r)
+#np.savez("Calibration/normal_right_calibration.npz", ret=ret_r, mtx=mtx_r, dist=dist_r, rvecs=rvecs_r, tvecs=tvecs_r)
 
 
 # Check for right image
