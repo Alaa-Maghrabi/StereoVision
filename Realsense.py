@@ -41,8 +41,8 @@ class Realsense:
         # Configure depth and color streams
         self.pipeline = rs.pipeline()
         config = rs.config()
-        config.enable_stream(rs.stream.depth, self.w, self.h, rs.format.z16, 60)
-        config.enable_stream(rs.stream.color, self.w, self.h, rs.format.bgr8, 60)
+        config.enable_stream(rs.stream.depth, self.w, self.h, rs.format.z16, 90)
+        config.enable_stream(rs.stream.color, self.w, self.h, rs.format.bgr8, 90)
 
         # Start streaming
         self.pipeline.start(config)
@@ -242,7 +242,7 @@ class Realsense:
                     t2=repr(t2)
                 ) for t, r00, r01, r02, t0, r10, r11, r12, t1, r20, r21, r22, t2 in self.slam.get_keyframe_points())
 
-    def SLAM_single_cycle(self, frames, start):
+    def SLAM_single_cycle(self, frames, start, show = False):
         t = time.time()
         seconds = t - start
         tframe = seconds
@@ -268,6 +268,12 @@ class Realsense:
         if self.point_3d:
             self.out.append([self.point_3d[0], self.point_3d[1], self.point_3d[2]])
 
+        if show:
+            depth_colormap = cv.applyColorMap(cv.convertScaleAbs(depth_image, alpha=0.03), cv.COLORMAP_JET)
+            # Stack both images horizontally
+            images = np.hstack((color_image, depth_colormap))
+            cv.imshow('RealSense',images)
+
         t1 = time.time()
         self.slam.process_image_rgbd(color_image, depth_image, tframe)
         t2 = time.time()
@@ -275,7 +281,7 @@ class Realsense:
         ttrack = t2 - t1
         return ttrack, xc, yc, radius
 
-    def SLAM(self, num_frames):
+    def SLAM(self, num_frames, show = False):
 
         # Start by initializing the mapping and disparity
         self.Initialize_Realsense(slam_bool=True)
@@ -296,7 +302,7 @@ class Realsense:
         for idx in range(num_frames):
             # Wait for a coherent pair of frames: depth and color
             frames = self.pipeline.wait_for_frames()
-            times_track[idx], xc, yc, radius = self.SLAM_single_cycle(frames, start)
+            times_track[idx], xc, yc, radius = self.SLAM_single_cycle(frames, start, show)
             current_traj = self.slam.get_trajectory_points()
             #print(current_traj)
             out = self.out
@@ -341,7 +347,7 @@ class Realsense:
         plt.plot(trajec[:, 4] + 10, trajec[:, 12], 'b', label='Stereo system translated')
         plt.plot(glob_X + 10, glob_Z, 'g', label='3D global translated', marker='*')
         plt.plot(self.out[:, 0], self.out[:, 2], 'r', label='3D relative', marker='*')
-        plt.legend(loc=2)
+        #plt.legend(loc=2)
         plt.show()
         times_track = sorted(times_track)
         total_time = sum(times_track)
@@ -354,9 +360,9 @@ class Realsense:
 
 if __name__ == '__main__':
     # Here is an example of how to run the code to get the coordinates
-    num_frames = 600
+    num_frames = 2000
     disparity_map = Realsense()
     #out = disparity_map.collect_frames_data(num_frames, show=False)
-    disparity_map.SLAM(num_frames)
+    disparity_map.SLAM(num_frames, show=False)
     disparity_map.destroy_feed()
     disparity_map.plot_charts()

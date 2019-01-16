@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="432a2c17-348e-4e3e-9093-a7329c0aa07b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parameters/Realsense.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Parameters/Realsense.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Realsense.py" beforeDir="false" afterPath="$PROJECT_DIR$/Realsense.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trajectory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/trajectory.txt" afterDir="false" />
     </list>
@@ -18,7 +16,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/disparity_fisheye.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1205">
+            <state relative-caret-position="3405">
               <caret line="232" column="8" selection-start-line="232" selection-start-column="8" selection-end-line="232" selection-end-column="8" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
@@ -30,8 +28,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Realsense.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="725">
-              <caret line="356" column="20" selection-start-line="356" selection-start-column="20" selection-end-line="356" selection-end-column="20" />
+            <state relative-caret-position="521">
+              <caret line="365" column="45" selection-start-line="365" selection-start-column="45" selection-end-line="365" selection-end-column="45" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -149,17 +147,18 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="4">
     <option name="x" value="992" />
-    <option name="y" value="-4" />
+    <option name="y" value="24" />
     <option name="width" value="928" />
-    <option name="height" value="1084" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -182,7 +181,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -331,14 +329,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
+    <frame x="992" y="24" width="928" height="1056" extended-state="4" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10262009" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.057458565" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.21630093" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22282024" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39916405" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -355,6 +354,16 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Calibration/left_16.png" />
     <entry file="file://$PROJECT_DIR$/Calibration/right_0.png" />
+    <entry file="file://$PROJECT_DIR$/disparity_fisheye.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3405">
+          <caret line="232" column="8" selection-start-line="232" selection-start-column="8" selection-end-line="232" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TEST.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="960">
@@ -419,20 +428,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/disparity_fisheye.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1205">
-          <caret line="232" column="8" selection-start-line="232" selection-start-column="8" selection-end-line="232" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Realsense.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="725">
-          <caret line="356" column="20" selection-start-line="356" selection-start-column="20" selection-end-line="356" selection-end-column="20" />
+        <state relative-caret-position="521">
+          <caret line="365" column="45" selection-start-line="365" selection-start-column="45" selection-end-line="365" selection-end-column="45" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>
