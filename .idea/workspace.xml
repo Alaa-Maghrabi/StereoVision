@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="432a2c17-348e-4e3e-9093-a7329c0aa07b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Calibration/Normal_lens/calib_single_camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/Calibration/Normal_lens/calib_single_camera.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parameters/Realsense.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Parameters/Realsense.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Realsense.py" beforeDir="false" afterPath="$PROJECT_DIR$/Realsense.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TEST.py" beforeDir="false" afterPath="$PROJECT_DIR$/TEST.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trajectory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/trajectory.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +18,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/disparity_fisheye.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="53">
-              <caret line="232" column="8" lean-forward="true" selection-start-line="232" selection-start-column="8" selection-end-line="232" selection-end-column="8" />
+            <state relative-caret-position="-1205">
+              <caret line="232" column="8" selection-start-line="232" selection-start-column="8" selection-end-line="232" selection-end-column="8" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -30,8 +30,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Realsense.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="321" column="36" lean-forward="true" selection-start-line="321" selection-start-column="36" selection-end-line="321" selection-end-column="36" />
+            <state relative-caret-position="725">
+              <caret line="356" column="20" selection-start-line="356" selection-start-column="20" selection-end-line="356" selection-end-column="20" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -42,8 +42,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TEST.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="990">
-              <caret line="66" column="27" lean-forward="true" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
+            <state relative-caret-position="960">
+              <caret line="66" column="27" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
               <folding>
                 <element signature="e#272#297#0" expanded="true" />
               </folding>
@@ -54,8 +54,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Calibration/Normal_lens/calib_single_camera.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="39" column="8" lean-forward="true" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
+            <state relative-caret-position="555">
+              <caret line="39" column="8" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -66,7 +66,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Calibration/Normal_lens/calib_stereo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
+            <state relative-caret-position="1530">
               <caret line="104" column="35" selection-start-line="104" selection-start-column="35" selection-end-line="104" selection-end-column="35" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
@@ -78,7 +78,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Calibration/Fisheye/calib_single_fisheye.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-628">
+            <state relative-caret-position="300">
               <caret line="20" column="31" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="31" />
             </state>
           </provider>
@@ -96,8 +96,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Calibration/Fisheye/calib_stereo_fisheye.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="446">
-              <caret line="110" column="8" lean-forward="true" selection-start-line="110" selection-start-column="8" selection-end-line="112" selection-end-column="44" />
+            <state relative-caret-position="1620">
+              <caret line="110" column="8" selection-start-line="110" selection-start-column="8" selection-end-line="112" selection-end-column="44" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -108,7 +108,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Test_BM.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1035">
+            <state relative-caret-position="3975">
               <caret line="274" column="33" selection-start-line="274" selection-start-column="33" selection-end-line="274" selection-end-column="33" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
@@ -122,9 +122,13 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>fish</find>
-      <find>imshow</find>
       <find>rgbd</find>
       <find>stereo</find>
+      <find>print</find>
+      <find>imshow</find>
+      <find>math</find>
+      <find>traj</find>
+      <find>60</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -145,18 +149,17 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="868" />
-    <option name="y" value="24" />
-    <option name="width" value="1052" />
-    <option name="height" value="1056" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="992" />
+    <option name="y" value="-4" />
+    <option name="width" value="928" />
+    <option name="height" value="1084" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -179,6 +182,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -327,15 +331,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="868" y="24" width="1052" height="1056" extended-state="4" />
-    <editor active="true" />
+    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18270165" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10262009" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22282024" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.21630093" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39916405" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -350,49 +353,42 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Test_BM.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1035">
-          <caret line="274" column="33" selection-start-line="274" selection-start-column="33" selection-end-line="274" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Calibration/left_16.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Calibration/right_0.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/disparity_fisheye.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="232" column="8" lean-forward="true" selection-start-line="232" selection-start-column="8" selection-end-line="232" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Calibration/left_16.png" />
+    <entry file="file://$PROJECT_DIR$/Calibration/right_0.png" />
     <entry file="file://$PROJECT_DIR$/TEST.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="66" column="27" lean-forward="true" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
+        <state relative-caret-position="960">
+          <caret line="66" column="27" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
           <folding>
             <element signature="e#272#297#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Calibration/Fisheye/calib_stereo_fisheye.py">
+    <entry file="file://$PROJECT_DIR$/Calibration/Normal_lens/calib_single_camera.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="110" column="8" lean-forward="true" selection-start-line="110" selection-start-column="8" selection-end-line="112" selection-end-column="44" />
+        <state relative-caret-position="555">
+          <caret line="39" column="8" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Calibration/Normal_lens/calib_stereo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="104" column="35" selection-start-line="104" selection-start-column="35" selection-end-line="104" selection-end-column="35" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Calibration/Fisheye/calib_single_fisheye.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="31" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -403,37 +399,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Calibration/Fisheye/calib_single_fisheye.py">
+    <entry file="file://$PROJECT_DIR$/Calibration/Fisheye/calib_stereo_fisheye.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-628">
-          <caret line="20" column="31" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Calibration/Normal_lens/calib_stereo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="104" column="35" selection-start-line="104" selection-start-column="35" selection-end-line="104" selection-end-column="35" />
+        <state relative-caret-position="1620">
+          <caret line="110" column="8" selection-start-line="110" selection-start-column="8" selection-end-line="112" selection-end-column="44" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Calibration/Normal_lens/calib_single_camera.py">
+    <entry file="file://$PROJECT_DIR$/Test_BM.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="39" column="8" lean-forward="true" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
+        <state relative-caret-position="3975">
+          <caret line="274" column="33" selection-start-line="274" selection-start-column="33" selection-end-line="274" selection-end-column="33" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/disparity_fisheye.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1205">
+          <caret line="232" column="8" selection-start-line="232" selection-start-column="8" selection-end-line="232" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Realsense.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="321" column="36" lean-forward="true" selection-start-line="321" selection-start-column="36" selection-end-line="321" selection-end-column="36" />
+        <state relative-caret-position="725">
+          <caret line="356" column="20" selection-start-line="356" selection-start-column="20" selection-end-line="356" selection-end-column="20" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>

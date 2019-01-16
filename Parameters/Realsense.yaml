@@ -10,10 +10,11 @@ Camera.fy: 615.084
 Camera.cx: 314.872
 Camera.cy: 252.333
 
-Camera.k1: 0.0
-Camera.k2: 0.0
-Camera.p1: 0.0
-Camera.p2: 0.0
+Camera.k1: 0
+Camera.k2: 0
+Camera.p1: 0
+Camera.p2: 0
+Camera.k3: 0
 
 Camera.width: 640
 Camera.height: 480
@@ -21,21 +22,35 @@ Camera.height: 480
 # Camera frames per second 
 Camera.fps: 30.0
 
-# stereo baseline times fx  baseline = 0.015183
-Camera.bf: 15.183
+# IR projector baseline times fx (aprox.)
+Camera.bf: 9.1279
 
 # Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
 Camera.RGB: 0
 
 # Close/Far threshold. Baseline times.
-ThDepth: 25
+ThDepth: 50
+
+# Deptmap values factor
+DepthMapFactor: 1000.0
+
+#Modeling Realsense D435 Sensor Noise for Improved 3D Reconstruction and Tracking.
+#sensor_processor/type: structured_light
+#sensor_processor/cutoff_min_depth: 0.2
+#sensor_processor/cutoff_max_depth: 3.25
+#sensor_processor/normal_factor_a: 0.000611
+#sensor_processor/normal_factor_b: 0.003587
+#sensor_processor/normal_factor_c: 0.3515
+#sensor_processor/normal_factor_d: 0
+#sensor_processor/normal_factor_e: 1
+#sensor_processor/lateral_factor: 0.01576
 
 #--------------------------------------------------------------------------------------------
 # ORB Parameters
 #--------------------------------------------------------------------------------------------
 
 # ORB Extractor: Number of features per image
-ORBextractor.nFeatures: 1200
+ORBextractor.nFeatures: 1000
 
 # ORB Extractor: Scale factor between levels in the scale pyramid 	
 ORBextractor.scaleFactor: 1.2
@@ -56,7 +71,7 @@ ORBextractor.minThFAST: 7
 Viewer.KeyFrameSize: 0.05
 Viewer.KeyFrameLineWidth: 1
 Viewer.GraphLineWidth: 0.9
-Viewer.PointSize: 2
+Viewer.PointSize:2
 Viewer.CameraSize: 0.08
 Viewer.CameraLineWidth: 3
 Viewer.ViewpointX: 0
