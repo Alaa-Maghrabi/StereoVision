@@ -44,7 +44,13 @@ try:
         mask = cv.inRange(hsv, (0, 100, 20), (20, 255, 255))
         mask = cv.erode(mask, None, iterations=1)
         mask = cv.dilate(mask, None, iterations=3)
-        cv.imshow('mask', mask)
+
+        mask_g = cv.inRange(hsv, (40, 100, 40), (80, 255, 255))
+        mask_g = cv.erode(mask_g, None, iterations=1)
+        mask_g = cv.dilate(mask_g, None, iterations=3)
+        cnts_g = cv.findContours(mask_g.copy(), cv.RETR_EXTERNAL,
+                                 cv.CHAIN_APPROX_SIMPLE)[-2]
+
 
         cnts = cv.findContours(mask.copy(), cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)[-2]
         center = None
@@ -61,12 +67,12 @@ try:
             c = max(cnts, key=cv.contourArea)
             ((x, y), radius) = cv.minEnclosingCircle(c)
             # computing the centroid of the ball
-            M = cv.moments(c)
-            center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
             # only proceed if the radius meets a minimum size
             if radius > 10:
                 # draw the circle and centroid on the frame,
                 # then update the list of tracked points
+                M = cv.moments(c)
+                center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
                 cv.circle(color_image, (int(x), int(y)), int(radius), (0, 255, 255), 1)
                 cv.circle(color_image, center, 2, (0, 255, 255), -1)
 
@@ -74,13 +80,37 @@ try:
                 yc = int(y)
                 depth = depth_frame.get_distance(xc, yc)
                 depth_point = rs.rs2_deproject_pixel_to_point(depth_intrin, [xc, yc], depth)
+
+        x, y, radius = 0, 0, 0
+        # only proceed if at least one contour was found
+        if len(cnts_g) > 0:
+            # find the largest contour in the mask, then use
+            # it to compute the minimum enclosing circle and
+            # centroid
+            c = max(cnts, key=cv.contourArea)
+            ((x, y), radius) = cv.minEnclosingCircle(c)
+
+            # only proceed if the radius meets a minimum size
+            if radius > 10:
+                # computing the centroid of the ball
+                M = cv.moments(c)
+                center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
+                # draw the circle and centroid on the frame,
+                # then update the list of tracked points
+                cv.circle(color_image, (int(x), int(y)), int(radius), (0, 255, 255), 1)
+                cv.circle(color_image, center, 2, (0, 255, 255), -1)
+
+                xg = int(x)
+                yg = int(y)
+        cv.imshow('Image_', mask)
+        cv.imshow('Image_2', mask_g)
         # print(depth_point)
         # Stack both images horizontally
         images = np.hstack((color_image, depth_colormap))
 
         # Show images
         cv.namedWindow('RealSense', cv.WINDOW_AUTOSIZE)
-        cv.imshow(' ', images)
+        cv.imshow('RealSense', images)
         cv.waitKey(1)
 
 finally:
